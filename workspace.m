@@ -100,11 +100,18 @@ for nr=1:length(nrs)
     end
     if indexes(nr) < length(zerosMax) + length(onesMax)
         nrs(nr) = 1;
+        index_scaled(nr) = indexes(nr) - length(zerosMax);
     end
     if indexes(nr) < length(zerosMax)
         nrs(nr) = 0;
+        index_scaled(nr) = indexes(nr);
     end
 end
 
-i
+sorted_nrs = zeros(3,1);
 
+[B, Ind] = sort(index_scaled);
+
+sorted_nrs(1) = nrs(Ind(1));
+sorted_nrs(2) = nrs(Ind(2));
+sorted_nrs(3) = nrs(Ind(3));
