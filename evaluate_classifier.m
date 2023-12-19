@@ -22,3 +22,6 @@ fprintf('\n\nAverage precision: \n');
 fprintf('%f\n\n',mean(sum(abs(true_labels - my_labels),2)==0));
 toc; % Stop the timer
 
+disp("Wrong matches:")
+disp(test(my_labels))
+
