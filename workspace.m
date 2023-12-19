@@ -3,7 +3,6 @@ close all;
 
 I0 = imread("imagedata/train_0039.png");
 
-
 I1 = imbinarize(I0);
 
 figure; imshow(I1);
@@ -14,23 +13,23 @@ figure; imshow(I2);
 I3 = medfilt2(I2, [5 5]);
 figure; imshow(I3);
 
-
-
-
 zeroTopLeft = [81, 83]';
 zeroBotRight = [114, 129]';
-
 zeroMask = I3(zeroTopLeft(2):zeroBotRight(2), zeroTopLeft(1):zeroBotRight(1));
 
 oneTopLeft = [130, 85]';
 oneBotRight = [158, 137]';
-
 oneMask = I3(oneTopLeft(2):oneBotRight(2), oneTopLeft(1):oneBotRight(1));
 
 twoTopLeft = [163, 82]';
 twoBotRight = [197, 127]';
 twoMask = I3(twoTopLeft(2):twoBotRight(2), twoTopLeft(1):twoBotRight(1));
 
+parameters{1} = zeroMask;
+parameters{2} = oneMask;
+parameters{3} = twoMask;
+
+save("parameters.mat", "parameters");
 
 figure; imshow(zeroMask);
 figure; imshow(oneMask);
